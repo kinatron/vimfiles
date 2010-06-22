@@ -37,7 +37,10 @@ nmap <D-0> g^
 set linespace=4
 
 "disable visual bell
-set visualbell t_vb=
+set noerrorbells 
+set novisualbell 
+set t_vb=
+
 
 "try to make possible to navigate within lines of wrapped lines
 nmap <Down> gj
@@ -255,9 +258,9 @@ if has("gui_running")
     if has("gui_gnome")
         set term=gnome-256color
         colorscheme ir_dark
-        set guifont=Inconsolata\ Medium\ 12
+        set guifont=Inconsolata\ Medium\ 14
     else
-        colorscheme railscasts
+        colorscheme sand
         set guitablabel=%M%t
         set lines=40
         set columns=115
@@ -270,7 +273,6 @@ if has("gui_running")
         "map <D-t> :CommandT<CR>
         " make Mac's Option key behave as the Meta key
         set invmmta
-        set transparency=5
     endif
     if has("gui_win32") || has("gui_win32s")
         set guifont=Consolas:h12
@@ -282,16 +284,22 @@ else
 endif
 
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
+nmap <silent> ` :wincmd w<CR>
+
+"Cycle through different buffers
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-m> :bprev<CR>
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
 "map to bufexplorer
-nnoremap <leader>b :BufExplorer<cr>
+nnoremap <leader>b :BufExplorerHorizontalSplit<cr>
+nnoremap <C-b> :BufExplorerHorizontalSplit<cr>
 
 "map to CommandT TextMate style finder
-nnoremap <leader>t :CommandT<CR>
+nnoremap <C-f> :CommandT<CR>
 
 "map Q to something useful
 noremap Q gq
@@ -367,7 +375,7 @@ function! s:HighlightLongLines(width)
         echomsg "Usage: HighlightLongLines [natural number]"
     endif
 endfunction
-
+-
 "key mapping for window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
