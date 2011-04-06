@@ -13,8 +13,12 @@ set history=1000
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
 
+
 set incsearch   "find the next match as we type the search
+set ignorecase  "Ignore case when searching
+set smartcase   " Case insensitive searches become sensitive with capitals
 set hlsearch    "hilight searches by default
+
 
 set number      "add line numbers
 set showbreak=...
@@ -300,6 +304,10 @@ nnoremap <C-b> :BufExplorerHorizontalSplit<cr>
 
 "map to CommandT TextMate style finder
 nnoremap <C-f> :CommandT<CR>
+nnoremap ,f :CommandT<CR>
+nnoremap ,e :e $MYVIMRC<CR>
+nnoremap ,s :so $MYVIMRC<CR>
+
 
 "map Q to something useful
 noremap Q gq
